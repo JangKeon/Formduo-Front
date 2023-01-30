@@ -18,6 +18,7 @@ jobs:
         with:
           node-version: 16
       - run: npm install
+      - run: npm install sharp
       - run: npm ci
       - run: npm run build
       
@@ -42,7 +43,7 @@ jobs:
             file: ./Dockerfile
             platforms: linux/amd64
             push: true
-            tags: r2god7k/jaksim31-frontend:latest
+            tags: r2god7k/jaksim31-frontend
             cache-from: type=gha    # gha=Github Action Cache
             cache-to: type=gha,mode=max
 
@@ -61,6 +62,6 @@ jobs:
               sudo /usr/sbin/groupadd -f docker
               sudo /usr/sbin/usermod -aG docker `user`
               sudo chown root:docker /var/run/docker.sock
-              docker pull r2god7k/jaksim31-frontend:latest
-              docker run -d -p 8085:8080 --name jaksim31-frontend r2god7k/jaksim31-frontend:latest
-              docker image rm r2god7k/jaksim31-frontend:latest
+              docker pull r2god7k/jaksim31-frontend
+              docker run -d -p 8085:8080 --name jaksim31-frontend r2god7k/jaksim31-frontend
+              docker image rm r2god7k/jaksim31-frontend
