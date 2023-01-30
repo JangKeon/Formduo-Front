@@ -43,14 +43,14 @@ jobs:
             file: ./Dockerfile
             platforms: linux/amd64
             push: true
-            tags: r2god7k/jaksim31-frontend
+            tags: r2god7k/jaksim31-frontend:latest
             cache-from: type=gha    # gha=Github Action Cache
             cache-to: type=gha,mode=max
 
       # SSH Connect
       - name: Deploy to VM
         uses: appleboy/ssh-action@master
-        with:
+        with: 
             host: ${{ secrets.REMOTE_IP }}
             username: ${{ secrets.REMOTE_SSH_ID }}
             key: ${{ secrets.REMOTE_SSH_KEY }}
@@ -62,6 +62,6 @@ jobs:
               sudo /usr/sbin/groupadd -f docker
               sudo /usr/sbin/usermod -aG docker `user`
               sudo chown root:docker /var/run/docker.sock
-              docker pull r2god7k/jaksim31-frontend
-              docker run -d -p 8085:8080 --name jaksim31-frontend r2god7k/jaksim31-frontend
-              docker image rm r2god7k/jaksim31-frontend
+              docker pull r2god7k/jaksim31-frontend:latest
+              docker run -d -p 3005:3000 --name jaksim31-frontend r2god7k/jaksim31-frontend:latest
+            
