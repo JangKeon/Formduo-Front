@@ -63,5 +63,5 @@ jobs:
               sudo /usr/sbin/usermod -aG docker `user`
               sudo chown root:docker /var/run/docker.sock
               docker pull r2god7k/jaksim31-frontend:latest
-              docker run -d -p 3005:3000 --name jaksim31-frontend r2god7k/jaksim31-frontend:latest
+              docker run -d -p 3000:3000 --name jaksim31-frontend r2god7k/jaksim31-frontend:latest
             
